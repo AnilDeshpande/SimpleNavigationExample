@@ -41,7 +41,7 @@ fun ScreeOnePreview() {
 
 @Preview(showBackground = true)
 @Composable
-fun ScreTwoPreview() {
+fun ScreenTwoPreview() {
     SimpleNavigationExampleTheme {
         ScreenTwo()
     }
