@@ -10,6 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.codetutor.simplenavigationexample.screens.ScreenOne
+import com.codetutor.simplenavigationexample.screens.ScreenThree
+import com.codetutor.simplenavigationexample.screens.ScreenTwo
 import com.codetutor.simplenavigationexample.ui.theme.SimpleNavigationExampleTheme
 
 class MainActivity : ComponentActivity() {
