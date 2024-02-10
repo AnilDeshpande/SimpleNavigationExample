@@ -2,6 +2,7 @@ package com.codetutor.simplenavigationexample
 
 import android.util.Log
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -20,6 +21,7 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -71,17 +73,21 @@ fun AppScaffold(navController: NavHostController){
     ) { paddingValues ->
 
         NavHost(navController, startDestination = "screen-one"){
-            composable("screen-one"){
-                ScreenOne(navController, modifier = Modifier.padding(paddingValues))
-            }
-
-            composable("screen-two"){
-                ScreenTwo(navController, modifier = Modifier.padding(paddingValues))
-            }
-
-            composable("screen-three"){
-                ScreenThree(navController, modifier = Modifier.padding(paddingValues))
-            }
+            navigationGraph(navController, paddingValues)
         }
+    }
+}
+
+fun NavGraphBuilder.navigationGraph(navController: NavHostController, paddingValues: PaddingValues){
+    composable("screen-one"){
+        ScreenOne(navController, modifier = Modifier.padding(paddingValues))
+    }
+
+    composable("screen-two"){
+        ScreenTwo(navController, modifier = Modifier.padding(paddingValues))
+    }
+
+    composable("screen-three"){
+        ScreenThree(navController, modifier = Modifier.padding(paddingValues))
     }
 }
