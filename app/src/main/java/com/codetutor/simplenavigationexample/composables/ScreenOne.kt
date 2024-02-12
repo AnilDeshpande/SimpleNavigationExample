@@ -1,4 +1,4 @@
-package com.codetutor.simplenavigationexample.screens
+package com.codetutor.simplenavigationexample.composables
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

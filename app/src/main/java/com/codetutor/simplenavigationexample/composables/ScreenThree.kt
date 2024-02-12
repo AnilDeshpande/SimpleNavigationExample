@@ -1,4 +1,4 @@
-package com.codetutor.simplenavigationexample.screens
+package com.codetutor.simplenavigationexample.composables
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 
 @Composable
-fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier) {
+fun ScreenThree( navController: NavController, modifier: Modifier = Modifier) {
     Column(
         modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -21,10 +21,9 @@ fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier) {
         Button(onClick = { navController.popBackStack() }) {
             Text(text = "Click for Previous")
         }
-        Text(text = "Screen Two")
-        Button(onClick = { navController.navigate("screen-three") }) {
-            Text(text = "Click for Screen 3")
+        Text(text = "Screen Three")
+        Button(onClick = { navController.popBackStack(navController.graph.startDestinationId, inclusive = false) }) {
+            Text(text = "Click for Home")
         }
     }
-
 }
