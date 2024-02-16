@@ -10,9 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 
 @Composable
-fun ScreenOne( modifier: Modifier = Modifier) {
+fun ScreenOne( navController: NavController, modifier: Modifier = Modifier) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -24,7 +25,7 @@ fun ScreenOne( modifier: Modifier = Modifier) {
         ) {
 
             Text(text = "Screen One")
-            Button(onClick = { /*TODO*/ }) {
+            Button(onClick = { navController.navigate("screen-two") }) {
                 Text(text = "Click for Screen 2")
             }
         }
