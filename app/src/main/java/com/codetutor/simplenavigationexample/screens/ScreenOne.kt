@@ -25,7 +25,7 @@ fun ScreenOne( navController: NavController, modifier: Modifier = Modifier) {
         ) {
 
             Text(text = "Screen One")
-            Button(onClick = { navController.navigate("screen-two") }) {
+            Button(onClick = { navController.navigate("screen-two/This is a sample data") }) {
                 Text(text = "Click for Screen 2")
             }
         }
