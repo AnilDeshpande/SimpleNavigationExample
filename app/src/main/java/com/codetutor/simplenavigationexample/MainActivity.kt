@@ -31,30 +31,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun ScreeOnePreview() {
-    val navController = rememberNavController()
-    SimpleNavigationExampleTheme {
-        ScreenOne(navController)
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ScreenTwoPreview() {
-    val navController = rememberNavController()
-    SimpleNavigationExampleTheme {
-        ScreenTwo(navController)
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ScreenThreePreview() {
-    val navController = rememberNavController()
-    SimpleNavigationExampleTheme {
-        ScreenThree(navController)
-    }
-}
