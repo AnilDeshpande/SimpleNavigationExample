@@ -85,7 +85,10 @@ fun getMyAppNavGraph(startDestination: String, navController: NavController, pad
 
         composable("screen-two/{data}"){
             val data = it.arguments?.getString("data") ?: "No Data"
-            ScreenTwo(navController, modifier = Modifier.padding(paddingValues), data = data)
+            navController.currentBackStackEntry?.arguments?.apply {
+                putString("data", data)
+            }
+            ScreenTwo(navController, modifier = Modifier.padding(paddingValues))
         }
 
         composable("screen-three"){

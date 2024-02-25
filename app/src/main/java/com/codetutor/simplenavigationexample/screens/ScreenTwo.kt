@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 
 @Composable
-fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier, data: String) {
+fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier) {
 
     Column(
         modifier.fillMaxSize(),
@@ -23,7 +23,7 @@ fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier, data:
         Button(onClick = { navController.popBackStack() }) {
             Text(text = "Click for Previous")
         }
-        Text(text = "Screen Two: Data $data")
+        Text(text = "Screen Two: Data ${navController.currentBackStackEntry?.arguments?.getString("data")}")
         Button(onClick = { navController.navigate("screen-three") }) {
             Text(text = "Click for Screen 3")
         }
