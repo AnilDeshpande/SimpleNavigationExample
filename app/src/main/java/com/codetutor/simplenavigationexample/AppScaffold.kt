@@ -30,6 +30,7 @@ import androidx.navigation.createGraph
 import com.codetutor.simplenavigationexample.screens.ScreenOne
 import com.codetutor.simplenavigationexample.screens.ScreenThree
 import com.codetutor.simplenavigationexample.screens.ScreenTwo
+import kotlinx.serialization.json.Json
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -84,7 +85,8 @@ fun getMyAppNavGraph(startDestination: String, navController: NavController, pad
         }
 
         composable("screen-two/{data}"){
-            val data = it.arguments?.getString("data") ?: "No Data"
+            val jsonData = it.arguments?.getString("data") ?: "No Data"
+            val data = Json { prettyPrint = true }.decodeFromString(com.codetutor.simplenavigationexample.data.Student.serializer(), jsonData)
             ScreenTwo(navController, modifier = Modifier.padding(paddingValues), data = data)
         }
 

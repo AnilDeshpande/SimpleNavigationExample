@@ -1,5 +1,6 @@
 package com.codetutor.simplenavigationexample.screens
 
+import android.support.v4.os.IResultReceiver.Stub
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,9 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.codetutor.simplenavigationexample.data.Student
 
 @Composable
-fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier, data: String) {
+fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier, data: Student) {
 
     Column(
         modifier.fillMaxSize(),
@@ -23,7 +25,7 @@ fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier, data:
         Button(onClick = { navController.popBackStack() }) {
             Text(text = "Click for Previous")
         }
-        Text(text = "Screen Two: Data $data")
+        Text(text = "Screen Two: Data ${data}")
         Button(onClick = { navController.navigate("screen-three") }) {
             Text(text = "Click for Screen 3")
         }

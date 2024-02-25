@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.codetutor.simplenavigationexample.data.Student
+import kotlinx.serialization.json.Json
 
 @Composable
 fun ScreenOne( navController: NavController, modifier: Modifier = Modifier) {
@@ -35,7 +36,8 @@ fun ScreenOne( navController: NavController, modifier: Modifier = Modifier) {
         ) {
 
             Text(text = "Screen One")
-            val data  = "This is a sample data"
+            val json = Json { prettyPrint = true }
+            val data  = json.encodeToString(Student.serializer(), sampleStudent)
             Button(onClick = { navController.navigate("screen-two/${data}") }) {
                 Text(text = "Click for Screen 2")
             }
