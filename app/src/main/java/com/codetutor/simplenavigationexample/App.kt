@@ -19,19 +19,9 @@ import com.codetutor.simplenavigationexample.screens.ScreenTwo
 
 @Composable
 fun App(){
-
-
     //NavController
     val navController = rememberNavController()
-
     MyAppScaffold(navController)
-
-    //NavHost
-//    NavHost(navController = navController, startDestination = "screen-one"){
-//        navigationGraph(navController = navController)
-//    }
-    
-
 }
 
 
