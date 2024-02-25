@@ -72,4 +72,5 @@ dependencies {
 
 
     implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
 }

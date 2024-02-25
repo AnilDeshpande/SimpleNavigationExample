@@ -11,9 +11,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.codetutor.simplenavigationexample.data.Student
 
 @Composable
 fun ScreenOne( navController: NavController, modifier: Modifier = Modifier) {
+
+    val sampleStudent = Student(name = "John Blake",
+                                age = 25,
+                                address = "New York, USA",
+                                contact = "1234567890",
+                                email = "dummyEmial@email.com",
+                                rollNo = 2342,
+                                standard = 12)
+
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -25,6 +35,7 @@ fun ScreenOne( navController: NavController, modifier: Modifier = Modifier) {
         ) {
 
             Text(text = "Screen One")
+            
             Button(onClick = { navController.navigate("screen-two/This is a sample data") }) {
                 Text(text = "Click for Screen 2")
             }
