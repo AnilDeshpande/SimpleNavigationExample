@@ -1,4 +1,4 @@
-package com.codetutor.simplenavigationexample.components.utils
+package com.codetutor.simplenavigationexample.utils
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
