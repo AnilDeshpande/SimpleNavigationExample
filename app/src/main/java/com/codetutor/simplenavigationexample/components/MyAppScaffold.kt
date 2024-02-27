@@ -30,7 +30,7 @@ import com.codetutor.simplenavigationexample.screens.ScreenTwo
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyAppScaffold (navController: NavHostController) {
+fun MyAppScaffold ( startDestination: String, navController: NavHostController) {
 
     var isBackEnabled = remember {
         mutableStateOf(false)
@@ -74,7 +74,7 @@ fun MyAppScaffold (navController: NavHostController) {
 
     ) { paddingValues ->
         //Add the app scaffold here and pass the padding values to scaffold
-        NavHost(navController = navController, graph = getMyNavGraph(navController, paddingValues))
+        NavHost(navController = navController, graph = getMyNavGraph(startDestination, navController, paddingValues))
     }
 }
 

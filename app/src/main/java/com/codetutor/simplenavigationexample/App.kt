@@ -18,10 +18,10 @@ import com.codetutor.simplenavigationexample.screens.ScreenTwo
 
 
 @Composable
-fun App(){
+fun App(startDestination: String = "screen-one"){
     //NavController
     val navController = rememberNavController()
-    MyAppScaffold(navController)
+    MyAppScaffold(startDestination, navController)
 }
 
 

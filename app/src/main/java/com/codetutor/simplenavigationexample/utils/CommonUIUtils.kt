@@ -12,13 +12,17 @@ import com.codetutor.simplenavigationexample.screens.ScreenOne
 import com.codetutor.simplenavigationexample.screens.ScreenThree
 import com.codetutor.simplenavigationexample.screens.ScreenTwo
 
-fun getMyNavGraph(controller: NavController, paddingValues: PaddingValues): NavGraph {
-    return controller.createGraph(startDestination = "screen-one"){
+fun getMyNavGraph(startDestination: String, controller: NavController, paddingValues: PaddingValues): NavGraph {
+    return controller.createGraph(startDestination){
         composable("screen-one"){
             ScreenOne(controller, modifier = Modifier.padding(paddingValues))
         }
 
-        composable("screen-two"){
+        composable("screen-two/{data}"){
+            val data = it.arguments?.getString("data") ?: "No Data Available"
+            controller.currentBackStackEntry?.arguments?.apply {
+                putString("data",data)
+            }
             ScreenTwo(controller, modifier = Modifier.padding(paddingValues))
         }
 
@@ -36,6 +40,10 @@ fun NavGraphBuilder.navigationGraph(navController: NavController, paddingValues:
     }
 
     composable("screen-two"){
+        val data = it.arguments?.getString("data") ?: "No Data Available"
+        navController.currentBackStackEntry?.arguments?.apply {
+            putString("data",data)
+        }
         ScreenTwo(navController, modifier = Modifier.padding(paddingValues))
     }
 
