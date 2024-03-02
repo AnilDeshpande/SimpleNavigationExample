@@ -14,7 +14,7 @@ import androidx.navigation.NavController
 import com.codetutor.simplenavigationexample.data.Student
 
 @Composable
-fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier, data: Student) {
+fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier) {
 
     Column(
         modifier.fillMaxSize(),
@@ -25,7 +25,10 @@ fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier, data:
         Button(onClick = { navController.popBackStack() }) {
             Text(text = "Click for Previous")
         }
-        Text(text = "Screen Two: Data ${data}")
+        val rollNo = navController.currentBackStackEntry?.arguments?.getInt("rollNo")
+        Log.d("ScreenTwo", "Roll No: $rollNo")
+
+        Text(text = "Screen Two: Data $rollNo")
         Button(onClick = { navController.navigate("screen-three") }) {
             Text(text = "Click for Screen 3")
         }

@@ -84,10 +84,12 @@ fun getMyAppNavGraph(startDestination: String, navController: NavController, pad
             ScreenOne(navController, modifier = Modifier.padding(paddingValues))
         }
 
-        composable("screen-two/{data}"){
-            val jsonData = it.arguments?.getString("data") ?: "No Data"
-            val data = Json { prettyPrint = true }.decodeFromString(com.codetutor.simplenavigationexample.data.Student.serializer(), jsonData)
-            ScreenTwo(navController, modifier = Modifier.padding(paddingValues), data = data)
+        composable("screen-two/{rollNo}"){
+            val data = it.arguments?.getInt("rollNo") ?: 0
+            navController.currentBackStackEntry?.arguments?.apply {
+                putInt("rollNo",data)
+            }
+            ScreenTwo(navController, modifier = Modifier.padding(paddingValues))
         }
 
         composable("screen-three"){

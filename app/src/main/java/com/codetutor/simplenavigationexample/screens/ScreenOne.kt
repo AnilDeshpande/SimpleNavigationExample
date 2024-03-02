@@ -17,14 +17,6 @@ import kotlinx.serialization.json.Json
 @Composable
 fun ScreenOne( navController: NavController, modifier: Modifier = Modifier) {
 
-    val sampleStudent = Student(name = "John Blake",
-                                age = 25,
-                                address = "New York, USA",
-                                contact = "1234567890",
-                                email = "dummyEmial@email.com",
-                                rollNo = 2342,
-                                standard = 12)
-
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -36,9 +28,8 @@ fun ScreenOne( navController: NavController, modifier: Modifier = Modifier) {
         ) {
 
             Text(text = "Screen One")
-            val json = Json { prettyPrint = true }
-            val data  = json.encodeToString(Student.serializer(), sampleStudent)
-            Button(onClick = { navController.navigate("screen-two/${data}") }) {
+            val rollNo = 101
+            Button(onClick = { navController.navigate("screen-two/$rollNo") }) {
                 Text(text = "Click for Screen 2")
             }
         }
