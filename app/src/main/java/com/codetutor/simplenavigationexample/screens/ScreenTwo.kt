@@ -32,7 +32,7 @@ fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier) {
         }
         val stringRollNo = navController.currentBackStackEntry?.arguments?.getString("rollNo")
         val rollNo = stringRollNo?.toInt() ?: 0
-        val student = myApplication.getRepository()?.getStudent(rollNo)
+        val student = myApplication.getRepository().getStudent(rollNo)
 
         Text(text = "Screen Two: Data $student")
         Button(onClick = { navController.navigate("screen-three") }) {
