@@ -12,6 +12,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.createGraph
 import com.codetutor.simplenavigationexample.components.MyAppScaffold
+
 import com.codetutor.simplenavigationexample.screens.ScreenOne
 import com.codetutor.simplenavigationexample.screens.ScreenThree
 import com.codetutor.simplenavigationexample.screens.ScreenTwo
@@ -23,6 +24,3 @@ fun App(startDestination: String = "screen-one"){
     val navController = rememberNavController()
     MyAppScaffold(startDestination, navController)
 }
-
-
-
