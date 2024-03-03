@@ -1,8 +1,5 @@
 package com.codetutor.simplenavigationexample.data
 
-import kotlinx.serialization.Serializable
-
-@Serializable
 data class Student (val name: String,
                     val age: Int,
                     val rollNo: Int,

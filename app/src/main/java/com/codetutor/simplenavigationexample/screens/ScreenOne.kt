@@ -36,9 +36,9 @@ fun ScreenOne( navController: NavController, modifier: Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            val  jsonString = Json{prettyPrint = true}.encodeToString(Student.serializer(), sampleStudent)
+            val rollNo = 101
             Text(text = "Screen One")
-            Button(onClick = { navController.navigate("screen-two/$jsonString") }) {
+            Button(onClick = { navController.navigate("screen-two/$rollNo") }) {
                 Text(text = "Click for Screen 2")
             }
         }
