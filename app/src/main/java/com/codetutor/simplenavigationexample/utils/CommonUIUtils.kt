@@ -31,23 +31,3 @@ fun getMyNavGraph(startDestination: String, controller: NavController, paddingVa
         }
     }
 }
-
-//NavGraph
-fun NavGraphBuilder.navigationGraph(navController: NavController, paddingValues: PaddingValues){
-
-    composable("screen-one"){
-        ScreenOne(navController, modifier = Modifier.padding(paddingValues))
-    }
-
-    composable("screen-two"){
-        val data = it.arguments?.getString("data") ?: "No Data Available"
-        navController.currentBackStackEntry?.arguments?.apply {
-            putString("data",data)
-        }
-        ScreenTwo(navController, modifier = Modifier.padding(paddingValues))
-    }
-
-    composable("screen-three"){
-        ScreenThree(navController, modifier = Modifier.padding(paddingValues))
-    }
-}
