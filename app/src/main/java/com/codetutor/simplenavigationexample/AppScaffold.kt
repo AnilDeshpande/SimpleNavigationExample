@@ -85,7 +85,8 @@ fun getMyAppNavGraph(startDestination: String, navController: NavController, pad
         }
 
         composable("screen-two/{rollNo}"){
-            val data = it.arguments?.getInt("rollNo") ?: 0
+            val stringRollNo = it.arguments?.getString("rollNo") ?: "0"
+            val data = stringRollNo.toInt()
             navController.currentBackStackEntry?.arguments?.apply {
                 putInt("rollNo",data)
             }

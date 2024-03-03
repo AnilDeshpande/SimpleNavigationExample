@@ -25,8 +25,8 @@ fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier) {
         Button(onClick = { navController.popBackStack() }) {
             Text(text = "Click for Previous")
         }
-        val rollNo = navController.currentBackStackEntry?.arguments?.getInt("rollNo")
-        Log.d("ScreenTwo", "Roll No: $rollNo")
+        val stringRollNo = navController.currentBackStackEntry?.arguments?.getString("rollNo")
+        val rollNo = stringRollNo?.toInt() ?: 0
 
         Text(text = "Screen Two: Data $rollNo")
         Button(onClick = { navController.navigate("screen-three") }) {
