@@ -9,6 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.codetutor.simplenavigationexample.data.Student
+import kotlinx.serialization.json.Json
 
 @Composable
 fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier) {
@@ -21,7 +23,9 @@ fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier) {
         Button(onClick = { navController.popBackStack() }) {
             Text(text = "Click for Previous")
         }
-        Text(text = "Screen Two Data received: ${navController.currentBackStackEntry?.arguments?.getString("data")}")
+        val jsonString = navController.currentBackStackEntry?.arguments?.getString("data") ?: "No Data Available"
+        val sampleStudent = Json { prettyPrint = true }.decodeFromString(Student.serializer(), jsonString)
+        Text(text = "Screen Two Data received: $sampleStudent")
         Button(onClick = { navController.navigate("screen-three") }) {
             Text(text = "Click for Screen 3")
         }
