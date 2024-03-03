@@ -7,7 +7,10 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
@@ -28,8 +31,8 @@ fun ScreenOne( navController: NavController, modifier: Modifier = Modifier) {
         ) {
 
             Text(text = "Screen One")
-            val rollNo = 101
-            Button(onClick = { navController.navigate("screen-two/$rollNo") }) {
+            val rollNumber = 101
+            Button(onClick = { navController.navigate("screen-two/$rollNumber") }) {
                 Text(text = "Click for Screen 2")
             }
         }
