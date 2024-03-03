@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 
 @Composable
-fun ScreenThree( navController: NavController, modifier: Modifier = Modifier) {
+fun ScreenThree(navController: NavController, modifier: Modifier = Modifier) {
     Column(
         modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
