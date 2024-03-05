@@ -20,6 +20,7 @@ fun ScreenOne(navController: NavController,
               sharedViewModel: SharedViewModel
 ) {
 
+
     val student = Student(name = "John Blake",
                         age = 25,
                         address = "New York, USA",
@@ -41,7 +42,7 @@ fun ScreenOne(navController: NavController,
 
             Text(text = "Screen One")
             Button(onClick = {
-                sharedViewModel.student.value = student
+                sharedViewModel.rollNo.value = 101
                 navController.navigate("screen-two") }
             ) {
                 Text(text = "Click for Screen 2")

@@ -6,4 +6,6 @@ data class Student (val name: String,
                val standard: Int,
                val address: String,
                val contact: String,
-               val email: String)
+               val email: String) {
+
+}

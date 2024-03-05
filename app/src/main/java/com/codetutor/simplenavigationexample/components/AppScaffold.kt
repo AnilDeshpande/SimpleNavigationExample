@@ -18,8 +18,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.codetutor.simplenavigationexample.MyApplication
 import com.codetutor.simplenavigationexample.utils.getMyAppNavGraph
 import com.codetutor.simplenavigationexample.viewmodels.SharedViewModel
 
@@ -28,7 +30,10 @@ import com.codetutor.simplenavigationexample.viewmodels.SharedViewModel
 @Composable
 fun AppScaffold(startDestination: String, navController: NavHostController){
 
-    val viewModel = remember { SharedViewModel() }
+    val context = LocalContext.current
+    val myApplication  = context.applicationContext as MyApplication
+
+    val viewModel = remember { SharedViewModel(myApplication.getRepository()) }
 
     var isBackEnabled = remember { mutableStateOf(false) }
 
