@@ -27,6 +27,8 @@ import com.codetutor.simplenavigationexample.utils.getMyAppNavGraph
 @Composable
 fun AppScaffold(startDestination: String, navController: NavHostController){
 
+    val viewModel = remember { SharedViewModel() }
+
     var isBackEnabled = remember { mutableStateOf(false) }
 
     navController.addOnDestinationChangedListener { controller, destination, arguments ->
@@ -64,7 +66,7 @@ fun AppScaffold(startDestination: String, navController: NavHostController){
             )
         },
     ) { paddingValues ->
-        NavHost(navController = navController, graph = getMyAppNavGraph(startDestination, navController, paddingValues))
+        NavHost(navController = navController, graph = getMyAppNavGraph(startDestination, navController, paddingValues, viewModel))
     }
 }
 

@@ -14,11 +14,22 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.codetutor.simplenavigationexample.SharedViewModel
 import com.codetutor.simplenavigationexample.data.Student
 import kotlinx.serialization.json.Json
 
 @Composable
-fun ScreenOne( navController: NavController, modifier: Modifier = Modifier) {
+fun ScreenOne( navController: NavController, modifier: Modifier = Modifier, viewModel: SharedViewModel) {
+
+    val student = Student(name = "John Blake",
+                        age = 25,
+                        address = "New York, USA",
+                        contact = "1234567890",
+                        rollNo = 101,
+                        standard = 12,
+                        email = "email.@email.com")
+
+
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -31,8 +42,10 @@ fun ScreenOne( navController: NavController, modifier: Modifier = Modifier) {
         ) {
 
             Text(text = "Screen One")
-            val rollNumber = 101
-            Button(onClick = { navController.navigate("screen-two/$rollNumber") }) {
+            Button(onClick = {
+                viewModel.student.value = student
+                navController.navigate("screen-two") }
+            ) {
                 Text(text = "Click for Screen 2")
             }
         }

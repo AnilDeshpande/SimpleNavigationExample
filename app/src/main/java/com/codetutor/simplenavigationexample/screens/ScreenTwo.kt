@@ -13,10 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.codetutor.simplenavigationexample.MyApplication
+import com.codetutor.simplenavigationexample.SharedViewModel
 import com.codetutor.simplenavigationexample.data.Student
 
 @Composable
-fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier) {
+fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier, sharedViewModel: SharedViewModel) {
 
     val context = LocalContext.current
     val myApplication = context.applicationContext as MyApplication
@@ -30,11 +31,8 @@ fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier) {
         Button(onClick = { navController.popBackStack() }) {
             Text(text = "Click for Previous")
         }
-        val stringRollNo = navController.currentBackStackEntry?.arguments?.getString("rollNo")
-        val rollNo = stringRollNo?.toInt() ?: 0
-        val student = myApplication.getRepository().getStudent(rollNo)
 
-        Text(text = "Screen Two: Data $student")
+        Text(text = "Screen Two: Data ${sharedViewModel.student.value}")
         Button(onClick = { navController.navigate("screen-three") }) {
             Text(text = "Click for Screen 3")
         }
