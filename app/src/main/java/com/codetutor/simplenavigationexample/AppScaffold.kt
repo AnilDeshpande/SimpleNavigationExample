@@ -2,8 +2,6 @@ package com.codetutor.simplenavigationexample
 
 import android.util.Log
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Home
@@ -20,17 +18,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
-import androidx.navigation.NavGraph
-import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.createGraph
-import com.codetutor.simplenavigationexample.screens.ScreenOne
-import com.codetutor.simplenavigationexample.screens.ScreenThree
-import com.codetutor.simplenavigationexample.screens.ScreenTwo
-import kotlinx.serialization.json.Json
+import com.codetutor.simplenavigationexample.utils.getMyAppNavGraph
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -78,23 +68,3 @@ fun AppScaffold(startDestination: String, navController: NavHostController){
     }
 }
 
-fun getMyAppNavGraph(startDestination: String, navController: NavController, paddingValues: PaddingValues): NavGraph {
-    return navController.createGraph(startDestination){
-        composable("screen-one"){
-            ScreenOne(navController, modifier = Modifier.padding(paddingValues))
-        }
-
-        composable("screen-two/{rollNo}"){
-            val stringRollNo = it.arguments?.getString("rollNo") ?: "0"
-            val data = stringRollNo.toInt()
-            navController.currentBackStackEntry?.arguments?.apply {
-                putInt("rollNo",data)
-            }
-            ScreenTwo(navController, modifier = Modifier.padding(paddingValues))
-        }
-
-        composable("screen-three"){
-            ScreenThree(navController, modifier = Modifier.padding(paddingValues))
-        }
-    }
-}
