@@ -1,4 +1,4 @@
-package com.codetutor.simplenavigationexample
+package com.codetutor.simplenavigationexample.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

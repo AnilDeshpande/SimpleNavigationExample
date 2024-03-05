@@ -1,4 +1,4 @@
-package com.codetutor.simplenavigationexample.screens
+package com.codetutor.simplenavigationexample.components.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -7,19 +7,18 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.codetutor.simplenavigationexample.SharedViewModel
+import com.codetutor.simplenavigationexample.viewmodels.SharedViewModel
 import com.codetutor.simplenavigationexample.data.Student
-import kotlinx.serialization.json.Json
 
 @Composable
-fun ScreenOne( navController: NavController, modifier: Modifier = Modifier, viewModel: SharedViewModel) {
+fun ScreenOne(navController: NavController,
+              modifier: Modifier = Modifier,
+              sharedViewModel: SharedViewModel
+) {
 
     val student = Student(name = "John Blake",
                         age = 25,
@@ -28,7 +27,6 @@ fun ScreenOne( navController: NavController, modifier: Modifier = Modifier, view
                         rollNo = 101,
                         standard = 12,
                         email = "email.@email.com")
-
 
 
     Surface(
@@ -43,7 +41,7 @@ fun ScreenOne( navController: NavController, modifier: Modifier = Modifier, view
 
             Text(text = "Screen One")
             Button(onClick = {
-                viewModel.student.value = student
+                sharedViewModel.student.value = student
                 navController.navigate("screen-two") }
             ) {
                 Text(text = "Click for Screen 2")

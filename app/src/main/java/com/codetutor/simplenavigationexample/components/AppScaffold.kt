@@ -1,4 +1,4 @@
-package com.codetutor.simplenavigationexample
+package com.codetutor.simplenavigationexample.components
 
 import android.util.Log
 import androidx.compose.foundation.clickable
@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.codetutor.simplenavigationexample.utils.getMyAppNavGraph
+import com.codetutor.simplenavigationexample.viewmodels.SharedViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)

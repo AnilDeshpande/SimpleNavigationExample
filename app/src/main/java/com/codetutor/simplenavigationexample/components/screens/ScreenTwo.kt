@@ -1,4 +1,4 @@
-package com.codetutor.simplenavigationexample.screens
+package com.codetutor.simplenavigationexample.components.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,9 +9,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.codetutor.simplenavigationexample.viewmodels.SharedViewModel
 
 @Composable
-fun ScreenThree( navController: NavController, modifier: Modifier = Modifier) {
+fun ScreenTwo(navController: NavController,
+              modifier: Modifier = Modifier,
+              sharedViewModel: SharedViewModel
+) {
+
     Column(
         modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -21,9 +26,11 @@ fun ScreenThree( navController: NavController, modifier: Modifier = Modifier) {
         Button(onClick = { navController.popBackStack() }) {
             Text(text = "Click for Previous")
         }
-        Text(text = "Screen Three")
-        Button(onClick = { navController.popBackStack(navController.graph.startDestinationId, inclusive = false) }) {
-            Text(text = "Click for Home")
+
+        Text(text = "Screen Two: Data ${sharedViewModel.student.value}")
+        Button(onClick = { navController.navigate("screen-three") }) {
+            Text(text = "Click for Screen 3")
         }
     }
+
 }
