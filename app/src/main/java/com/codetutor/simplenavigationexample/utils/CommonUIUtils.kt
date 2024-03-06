@@ -12,18 +12,31 @@ import com.codetutor.simplenavigationexample.components.screens.ScreenOne
 import com.codetutor.simplenavigationexample.components.screens.ScreenThree
 import com.codetutor.simplenavigationexample.components.screens.ScreenTwo
 
-fun getMyAppNavGraph(startDestination: String, navController: NavController, paddingValues: PaddingValues, viewModel: SharedViewModel): NavGraph {
+fun getMyAppNavGraph(
+    startDestination: String,
+    navController: NavController,
+    paddingValues: PaddingValues,
+    viewModel: SharedViewModel
+): NavGraph {
 
-    return navController.createGraph(startDestination){
-        composable("screen-one"){
-            ScreenOne(navController, modifier = Modifier.padding(paddingValues), sharedViewModel = viewModel)
+    return navController.createGraph(startDestination) {
+        composable("screen-one") {
+            ScreenOne(
+                navController,
+                modifier = Modifier.padding(paddingValues),
+                sharedViewModel = viewModel
+            )
         }
 
-        composable("screen-two"){
-            ScreenTwo(navController, modifier = Modifier.padding(paddingValues), sharedViewModel = viewModel)
+        composable("screen-two") {
+            ScreenTwo(
+                navController,
+                modifier = Modifier.padding(paddingValues),
+                sharedViewModel = viewModel
+            )
         }
 
-        composable("screen-three"){
+        composable("screen-three") {
             ScreenThree(navController, modifier = Modifier.padding(paddingValues))
         }
     }

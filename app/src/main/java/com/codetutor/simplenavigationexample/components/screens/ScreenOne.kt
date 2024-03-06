@@ -15,18 +15,21 @@ import com.codetutor.simplenavigationexample.viewmodels.SharedViewModel
 import com.codetutor.simplenavigationexample.data.Student
 
 @Composable
-fun ScreenOne(navController: NavController,
-              modifier: Modifier = Modifier,
-              sharedViewModel: SharedViewModel
+fun ScreenOne(
+    navController: NavController,
+    modifier: Modifier = Modifier,
+    sharedViewModel: SharedViewModel
 ) {
 
-    val student = Student(name = "John Blake",
-                        age = 25,
-                        address = "New York, USA",
-                        contact = "1234567890",
-                        rollNo = 101,
-                        standard = 12,
-                        email = "email.@email.com")
+    val student = Student(
+        name = "John Blake",
+        age = 25,
+        address = "New York, USA",
+        contact = "1234567890",
+        rollNo = 101,
+        standard = 12,
+        email = "email.@email.com"
+    )
 
 
     Surface(
@@ -42,7 +45,8 @@ fun ScreenOne(navController: NavController,
             Text(text = "Screen One")
             Button(onClick = {
                 sharedViewModel.student.value = student
-                navController.navigate("screen-two") }
+                navController.navigate("screen-two")
+            }
             ) {
                 Text(text = "Click for Screen 2")
             }

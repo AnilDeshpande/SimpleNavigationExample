@@ -12,9 +12,10 @@ import androidx.navigation.NavController
 import com.codetutor.simplenavigationexample.viewmodels.SharedViewModel
 
 @Composable
-fun ScreenTwo(navController: NavController,
-              modifier: Modifier = Modifier,
-              sharedViewModel: SharedViewModel
+fun ScreenTwo(
+    navController: NavController,
+    modifier: Modifier = Modifier,
+    sharedViewModel: SharedViewModel
 ) {
 
     Column(

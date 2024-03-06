@@ -26,7 +26,7 @@ import com.codetutor.simplenavigationexample.viewmodels.SharedViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppScaffold(startDestination: String, navController: NavHostController){
+fun AppScaffold(startDestination: String, navController: NavHostController) {
 
     val viewModel = remember { SharedViewModel() }
 
@@ -40,34 +40,36 @@ fun AppScaffold(startDestination: String, navController: NavHostController){
 
     Scaffold(
         topBar = {
-            TopAppBar (
-                colors = TopAppBarDefaults.smallTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary
-                ),
-                title = {
+            TopAppBar(colors = TopAppBarDefaults.smallTopAppBarColors(
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                titleContentColor = MaterialTheme.colorScheme.primary
+            ), title = {
 
-                    Text(text = "CountryInfoApp", style = MaterialTheme.typography.labelLarge)
-                },
-               navigationIcon = {
-                   var navIcon = if (isBackEnabled.value){
-                       Icons.Filled.Home
-                   }else{
-                       Icons.Filled.ArrowBack
-                   }
-                    IconButton(onClick = { /*TODO*/ }) {
-                        Icon(imageVector = navIcon, contentDescription ="ArrowBack", Modifier.clickable {
-                            if(!isBackEnabled.value){
+                Text(text = "CountryInfoApp", style = MaterialTheme.typography.labelLarge)
+            }, navigationIcon = {
+                var navIcon = if (isBackEnabled.value) {
+                    Icons.Filled.Home
+                } else {
+                    Icons.Filled.ArrowBack
+                }
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(imageVector = navIcon,
+                        contentDescription = "ArrowBack",
+                        Modifier.clickable {
+                            if (!isBackEnabled.value) {
                                 navController.popBackStack()
                             }
                         })
-                    }
                 }
+            }
 
             )
         },
     ) { paddingValues ->
-        NavHost(navController = navController, graph = getMyAppNavGraph(startDestination, navController, paddingValues, viewModel))
+        NavHost(
+            navController = navController,
+            graph = getMyAppNavGraph(startDestination, navController, paddingValues, viewModel)
+        )
     }
 }
 
