@@ -26,9 +26,9 @@ import com.codetutor.simplenavigationexample.viewmodels.SharedViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppScaffold(startDestination: String, navController: NavHostController) {
+fun AppScaffold(startDestination: String, navController: NavHostController, sharedViewModel: SharedViewModel) {
 
-    val viewModel = remember { SharedViewModel() }
+
 
     var isBackEnabled = remember { mutableStateOf(false) }
 
@@ -68,7 +68,7 @@ fun AppScaffold(startDestination: String, navController: NavHostController) {
     ) { paddingValues ->
         NavHost(
             navController = navController,
-            graph = getMyAppNavGraph(startDestination, navController, paddingValues, viewModel)
+            graph = getMyAppNavGraph(startDestination, navController, paddingValues, sharedViewModel)
         )
     }
 }
