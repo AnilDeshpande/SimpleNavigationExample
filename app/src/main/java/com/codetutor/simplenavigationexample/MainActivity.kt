@@ -6,13 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.rememberNavController
-import com.codetutor.simplenavigationexample.components.screens.ScreenOne
-import com.codetutor.simplenavigationexample.components.screens.ScreenThree
-import com.codetutor.simplenavigationexample.components.screens.ScreenTwo
 import com.codetutor.simplenavigationexample.ui.theme.SimpleNavigationExampleTheme
 
 class MainActivity : ComponentActivity() {
