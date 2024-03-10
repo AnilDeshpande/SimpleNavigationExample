@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph
@@ -23,8 +24,11 @@ import com.codetutor.simplenavigationexample.viewmodel.SharedViewModel
 fun App(startDestination: String = "screen-one"){
     //NavController
     val navController = rememberNavController()
+    val context = LocalContext.current
+    val application = context.applicationContext as MyApplication
+
     val sharedViewModel = remember {
-        SharedViewModel()
+        SharedViewModel(application.getRepository())
     }
     MyAppScaffold(startDestination, navController, sharedViewModel)
 }

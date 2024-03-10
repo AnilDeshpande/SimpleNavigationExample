@@ -40,7 +40,7 @@ fun ScreenOne( navController: NavController, modifier: Modifier, sharedViewModel
 
             Text(text = "Screen One")
             Button(onClick = {
-                sharedViewModel.student.value = sampleStudent
+                sharedViewModel.rollNo.value = 102
                 navController.navigate("screen-two")
             }) {
                 Text(text = "Click for Screen 2")

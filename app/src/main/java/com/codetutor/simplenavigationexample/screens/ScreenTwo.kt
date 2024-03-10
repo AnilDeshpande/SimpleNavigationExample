@@ -32,7 +32,7 @@ fun ScreenTwo(navController: NavController, modifier: Modifier = Modifier, share
             Text(text = "Click for Previous")
         }
 
-        Text(text = "Screen Two Data received: ${sharedViewModel.student.value}")
+        Text(text = "Screen Two Data received: ${sharedViewModel.getStudent()}")
         Button(onClick = { navController.navigate("screen-three") }) {
             Text(text = "Click for Screen 3")
         }
