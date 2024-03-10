@@ -18,10 +18,13 @@ import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.codetutor.simplenavigationexample.utils.getMyNavGraph
+import com.codetutor.simplenavigationexample.viewmodel.SharedViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyAppScaffold(startDestination: String, navController: NavHostController) {
+fun MyAppScaffold(startDestination: String,
+                  navController: NavHostController,
+                  sharedViewModel: SharedViewModel) {
 
     var isBackEnabled = remember {
         mutableStateOf(false)
@@ -71,7 +74,7 @@ fun MyAppScaffold(startDestination: String, navController: NavHostController) {
         //Add the app scaffold here and pass the padding values to scaffold
         NavHost(
             navController = navController,
-            graph = getMyNavGraph(startDestination, navController, paddingValues)
+            graph = getMyNavGraph(startDestination, navController, paddingValues, sharedViewModel)
         )
     }
 }
