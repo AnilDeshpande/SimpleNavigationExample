@@ -24,12 +24,7 @@ fun getMyNavGraph(
             ScreenOne(controller, modifier = Modifier.padding(paddingValues), sharedViewModel)
         }
 
-        composable("screen-two/{rollNo}") {
-            val stringRollNumber = it.arguments?.getString("rollNo") ?: "0"
-            val data = stringRollNumber.toInt()
-            controller.currentBackStackEntry?.arguments?.apply {
-                putInt("rollNo", data)
-            }
+        composable("screen-two") {
             ScreenTwo(controller, modifier = Modifier.padding(paddingValues), sharedViewModel)
         }
 

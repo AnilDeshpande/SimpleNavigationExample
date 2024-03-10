@@ -37,11 +37,11 @@ fun ScreenOne( navController: NavController, modifier: Modifier, sharedViewModel
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            val rollNo = 101
+
             Text(text = "Screen One")
             Button(onClick = {
                 sharedViewModel.student.value = sampleStudent
-                navController.navigate("screen-two/$rollNo")
+                navController.navigate("screen-two")
             }) {
                 Text(text = "Click for Screen 2")
             }
