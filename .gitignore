@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+*.xd
+*.lck
+.idea/copilot/chatSessions/blobs/version
