@@ -1,5 +1,6 @@
 package com.codetutor.simplenavigationexample.components.screens
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,36 +28,11 @@ fun ScreenOne(
     sharedViewModel: SharedViewModel
 ) {
 
-    val isDialogVisible = remember {
-        mutableStateOf(false)
-    }
-
-    val dialogData = remember {
-        mutableStateOf("")
-    }
-
-
-    when {
-        isDialogVisible.value -> {
-            SampleDialog(
-                onDismissRequest = { isDialogVisible.value = false },
-                onConfirmation = { isDialogVisible.value = false },
-                onData = { data -> dialogData.value = data },
-                dialogTitle = "Sample Dialog",
-                dialogText = "This is a sample dialog",
-                icon = Icons.Filled.Info
-            )
-        }
-    }
-
-    when {
-        dialogData.value.isNotEmpty() &&
-        !isDialogVisible.value -> {
-            Toast.makeText(
-                navController.context,
-                "Data from dialog: ${dialogData.value}",
-                Toast.LENGTH_SHORT
-            ).show()
+    when{
+        navController.previousBackStackEntry?.savedStateHandle?.contains("dataKey") == true -> {
+            Log.i("ScreenOne", "Data received ${navController.previousBackStackEntry?.savedStateHandle?.get<String>("dataKey")}")
+            val data = navController.currentBackStackEntry?.savedStateHandle?.get<String>("dataKey")
+            Toast.makeText(navController.context, "Data received: $data", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -82,8 +58,8 @@ fun ScreenOne(
         ) {
 
             Button(onClick = {
-                isDialogVisible.value = !isDialogVisible.value
-                /*navController.navigate("sample-dialog")*/
+
+                navController.navigate("sample-dialog")
             }
             ) {
                 Text(text = "Show Pop up dialog")

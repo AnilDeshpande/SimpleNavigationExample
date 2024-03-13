@@ -43,15 +43,21 @@ fun getMyAppNavGraph(
         composable("screen-three") {
             ScreenThree(navController, modifier = Modifier.padding(paddingValues))
         }
-        
-        /*dialog("sample-dialog") {
+
+        dialog("sample-dialog") {
             SampleDialog(
                 onDismissRequest = { navController.popBackStack() },
                 onConfirmation = { navController.popBackStack() },
+                onData = { data ->
+                    navController.previousBackStackEntry?.savedStateHandle?.set(
+                        "dataKey",
+                        data
+                    )
+                },
                 dialogTitle = "Sample Dialog",
                 dialogText = "This is a sample dialog",
                 icon = Icons.Filled.Info
-            ) { data -> dialogData.value = data }
-        }*/
+            )
+        }
     }
 }
