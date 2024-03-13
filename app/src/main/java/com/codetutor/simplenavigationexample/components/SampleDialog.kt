@@ -16,6 +16,7 @@ fun SampleDialog(
     dialogTitle: String,
     dialogText: String,
     icon: ImageVector,
+    onData: (String) -> Unit,
 ) {
     AlertDialog(
         icon = {
@@ -28,11 +29,13 @@ fun SampleDialog(
             Text(text = dialogText)
         },
         onDismissRequest = {
+            onData("Data being passed from dialog to screen one")
             onDismissRequest()
         },
         confirmButton = {
             TextButton(
                 onClick = {
+                    onData("Data being passed from dialog to screen one")
                     onConfirmation()
                 }
             ) {
@@ -42,6 +45,7 @@ fun SampleDialog(
         dismissButton = {
             TextButton(
                 onClick = {
+                    onData("Data being passed from dialog to screen one")
                     onDismissRequest()
                 }
             ) {

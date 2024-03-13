@@ -1,5 +1,6 @@
 package com.codetutor.simplenavigationexample.components.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -30,15 +31,32 @@ fun ScreenOne(
         mutableStateOf(false)
     }
 
+    val dialogData = remember {
+        mutableStateOf("")
+    }
+
+
     when {
         isDialogVisible.value -> {
             SampleDialog(
                 onDismissRequest = { isDialogVisible.value = false },
                 onConfirmation = { isDialogVisible.value = false },
+                onData = { data -> dialogData.value = data },
                 dialogTitle = "Sample Dialog",
                 dialogText = "This is a sample dialog",
                 icon = Icons.Filled.Info
             )
+        }
+    }
+
+    when {
+        dialogData.value.isNotEmpty() &&
+        !isDialogVisible.value -> {
+            Toast.makeText(
+                navController.context,
+                "Data from dialog: ${dialogData.value}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

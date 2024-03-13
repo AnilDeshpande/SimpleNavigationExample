@@ -44,14 +44,14 @@ fun getMyAppNavGraph(
             ScreenThree(navController, modifier = Modifier.padding(paddingValues))
         }
         
-        dialog("sample-dialog") {
+        /*dialog("sample-dialog") {
             SampleDialog(
                 onDismissRequest = { navController.popBackStack() },
                 onConfirmation = { navController.popBackStack() },
                 dialogTitle = "Sample Dialog",
                 dialogText = "This is a sample dialog",
                 icon = Icons.Filled.Info
-            )
-        }
+            ) { data -> dialogData.value = data }
+        }*/
     }
 }
