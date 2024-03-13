@@ -8,6 +8,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
@@ -15,19 +17,26 @@ import com.codetutor.simplenavigationexample.viewmodels.SharedViewModel
 import com.codetutor.simplenavigationexample.data.Student
 
 @Composable
-fun ScreenOne(navController: NavController,
-              modifier: Modifier = Modifier,
-              sharedViewModel: SharedViewModel
+fun ScreenOne(
+    navController: NavController,
+    modifier: Modifier = Modifier,
+    sharedViewModel: SharedViewModel
 ) {
 
+    val isDialogVisible = remember {
+        mutableStateOf(false)
+    }
 
-    val student = Student(name = "John Blake",
-                        age = 25,
-                        address = "New York, USA",
-                        contact = "1234567890",
-                        rollNo = 101,
-                        standard = 12,
-                        email = "email.@email.com")
+
+    val student = Student(
+        name = "John Blake",
+        age = 25,
+        address = "New York, USA",
+        contact = "1234567890",
+        rollNo = 101,
+        standard = 12,
+        email = "email.@email.com"
+    )
 
 
     Surface(
@@ -40,10 +49,19 @@ fun ScreenOne(navController: NavController,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
+            Button(onClick = {
+                isDialogVisible.value = true
+                navController.navigate("sample-dialog")
+            }
+            ) {
+                Text(text = "Show Pop up dialog")
+            }
+
             Text(text = "Screen One")
             Button(onClick = {
                 sharedViewModel.rollNo.value = 101
-                navController.navigate("screen-two") }
+                navController.navigate("screen-two")
+            }
             ) {
                 Text(text = "Click for Screen 2")
             }
