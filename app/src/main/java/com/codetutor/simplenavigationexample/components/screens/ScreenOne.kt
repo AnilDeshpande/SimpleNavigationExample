@@ -3,6 +3,8 @@ package com.codetutor.simplenavigationexample.components.screens
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -13,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.codetutor.simplenavigationexample.components.SampleDialog
 import com.codetutor.simplenavigationexample.viewmodels.SharedViewModel
 import com.codetutor.simplenavigationexample.data.Student
 
@@ -27,6 +30,17 @@ fun ScreenOne(
         mutableStateOf(false)
     }
 
+    when {
+        isDialogVisible.value -> {
+            SampleDialog(
+                onDismissRequest = { isDialogVisible.value = false },
+                onConfirmation = { isDialogVisible.value = false },
+                dialogTitle = "Sample Dialog",
+                dialogText = "This is a sample dialog",
+                icon = Icons.Filled.Info
+            )
+        }
+    }
 
     val student = Student(
         name = "John Blake",
@@ -50,8 +64,8 @@ fun ScreenOne(
         ) {
 
             Button(onClick = {
-                isDialogVisible.value = true
-                navController.navigate("sample-dialog")
+                isDialogVisible.value = !isDialogVisible.value
+                /*navController.navigate("sample-dialog")*/
             }
             ) {
                 Text(text = "Show Pop up dialog")
