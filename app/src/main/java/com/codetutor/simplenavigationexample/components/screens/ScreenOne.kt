@@ -55,7 +55,7 @@ fun ScreenOne(
             Toast.makeText(
                 navController.context,
                 "Data from dialog: ${dialogData.value}",
-                Toast.LENGTH_SHORT
+                Toast.LENGTH_LONG
             ).show()
         }
     }
