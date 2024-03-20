@@ -1,6 +1,7 @@
 package com.codetutor.simplenavigationexample.screens
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,22 +25,6 @@ import kotlinx.serialization.json.Json
 @Composable
 fun ScreenOne(navController: NavController, modifier: Modifier, sharedViewModel: SharedViewModel) {
 
-    val isDialogVisible = remember {
-        mutableStateOf(false)
-    }
-
-    when {
-        isDialogVisible.value -> {
-            SampleDialog(
-                onDismissRequest = { isDialogVisible.value = false },
-                onConfirmation = { isDialogVisible.value = false },
-                dialogTitle = "Sample Dialog",
-                dialogText = "This is a sample dialog",
-                icon = Icons.Filled.Info
-            )
-        }
-    }
-
     val sampleStudent = Student(
         name = "Ankit Nahar",
         age = 25,
@@ -61,7 +46,7 @@ fun ScreenOne(navController: NavController, modifier: Modifier, sharedViewModel:
         ) {
 
             Button(onClick = {
-                isDialogVisible.value = true
+                navController.navigate("sample-dialog")
             }) {
                 Text(text = "Show Dialog")
             }

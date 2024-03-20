@@ -15,7 +15,7 @@ fun SampleDialog(
     onConfirmation: () -> Unit,
     dialogTitle: String,
     dialogText: String,
-    icon: ImageVector,
+    icon: ImageVector
 ) {
     AlertDialog(
         icon = {
